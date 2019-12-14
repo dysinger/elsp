@@ -1,6 +1,6 @@
 {
   "name": "elsp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "My Project",
   "esy": {
     "build": "dune build -p <PACKAGE_NAME>",
@@ -13,7 +13,7 @@
   },
   "buildDirs": {
     "test": {
-      "require": ["elsp.lib"],
+      "require": [ "elsp.lib" ],
       "main": "TestElsp",
       "name": "TestElsp.exe"
     },
@@ -22,7 +22,7 @@
       "namespace": "Elsp"
     },
     "executable": {
-      "require": ["elsp.lib"],
+      "require": [ "elsp.lib" ],
       "main": "ElspApp",
       "name": "ElspApp.exe"
     }
@@ -32,14 +32,20 @@
     "test": "esy x TestElsp.exe"
   },
   "dependencies": {
-    "@opam/dune": ">=1.6.0",
-    "@esy-ocaml/reason": "*",
-    "ocaml": "^4.4.0"
+    "@esy-ocaml/reason": "~3.5",
+    "@opam/dune": "~1.11",
+    "ocaml": "~4.7"
   },
   "devDependencies": {
-    "ocaml": "4.7.1004",
-    "refmterr": "*",
-    "pesy": "*",
-    "@opam/merlin": "*"
+    "@esy-ocaml/rtop": "~3.3",
+    "@opam/merlin": "*",
+    "@opam/merlin-lsp": "*",
+    "ocaml": "~4.7",
+    "pesy": "~0.4",
+    "refmterr": "~3.2"
+  },
+  "resolutions": {
+    "@opam/merlin": "ocaml/merlin:merlin.opam#f030d5d",
+    "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#f030d5d"
   }
 }
