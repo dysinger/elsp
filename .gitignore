@@ -8,4 +8,5 @@ elsp.install
 node_modules
 node_modules/
 npm-debug.log
+result
 yarn-error.log
