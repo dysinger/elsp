@@ -45,7 +45,9 @@
     "refmterr": "~3.2"
   },
   "resolutions": {
+    "@opam/easy-format": "1.3.1",
     "@opam/merlin": "ocaml/merlin:merlin.opam#f030d5d",
-    "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#f030d5d"
+    "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#f030d5d",
+    "@opam/ocaml-migrate-parsetree": "1.4.0"
   }
 }
