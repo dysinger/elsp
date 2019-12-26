@@ -2,7 +2,6 @@
 
 let
   ocamlOverlay = self: super: {
-    # ocaml = super.ocaml.override { useX11 = false; };
     opaline = super.opaline.overrideAttrs (o: rec {
       nativeBuildInputs = (with super.ocamlPackages; [
         ocaml findlib ocamlbuild opam-file-format
@@ -15,33 +14,14 @@ in
 
 {
   elsp = {
-    native = # NOTE: YOU HAVE TO COMPILE MACOS ON MACOS
-      callPackage ./generic.nix {
-        inherit ocamlPackages dune reason upx;
-      };
-    aarch64 =
-      with pkgs.pkgsStatic.pkgsCross.aarch64-multiplatform;
-      callPackage ./generic.nix {
-        inherit (pkgs) dune reason upx;
-        inherit ocamlPackages;
+    native =
+      pkgs.callPackage ./generic.nix {
+        inherit (pkgs) ocamlPackages dune reason;
       };
     musl64 =
-      with pkgs.pkgsStatic.pkgsCross.musl64;
-      callPackage ./generic.nix {
-        inherit (pkgs) dune reason upx;
-        inherit ocamlPackages;
-      };
-    mingw32 =
-      # let
-      #   crossPkgs = import sources.nixpkgs {
-      #     crossSystem = pkgs.lib.systems.examples.mingw32;
-      #     inherit overlays;
-      #   };
-      # in
-      #   with crossPkgs;
-      with pkgs.pkgsCross.mingw32;
-      callPackage ./generic.nix {
-        inherit ocamlPackages dune reason upx;
+      pkgs.callPackage ./generic.nix {
+        inherit (pkgs.pkgsCross.musl64.pkgsStatic) ocamlPackages;
+        inherit (pkgs) dune reason;
       };
   };
 }
