@@ -16,12 +16,12 @@ in
   elsp = {
     native =
       pkgs.callPackage ./generic.nix {
-        inherit (pkgs) ocamlPackages dune reason;
+        inherit (pkgs) ocamlPackages dune reason upx;
       };
     musl64 =
       pkgs.callPackage ./generic.nix {
         inherit (pkgs.pkgsCross.musl64.pkgsStatic) ocamlPackages;
-        inherit (pkgs) dune reason;
+        inherit (pkgs) dune reason upx;
       };
   };
 }
